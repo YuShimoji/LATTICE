@@ -33,7 +33,7 @@ npm run build
 ## Latest verification
 
 - `npm run typecheck`: PASS.
-- `npm test`: 1 file / 4 tests PASS. Vitest reports an exit open-handle warning after successful closure in this Windows environment.
+- `npm test`: 1 file / 4 tests PASS with a clean process exit; the earlier Windows open-handle warning did not reproduce on the 2026-08-04 recheck.
 - `npm run build`: Vite production build PASS; 12 modules, 495.27 kB main JS before gzip.
 - Browser QA: PASS at 1280×720 and 390×844.
 - Browser path: concourse → terminal → seventh player registration → Triangle → gate online → energized gate → three-line Registered Echo dialogue → route restored.
