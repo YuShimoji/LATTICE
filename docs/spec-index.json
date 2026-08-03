@@ -1,0 +1,11 @@
+{
+  "schema": "lattice-spec-index.v1",
+  "authority": [
+    "docs/PROJECT_CANON.md",
+    "docs/FIRST_PLAYABLE_CONTRACT.md",
+    "docs/RUNTIME_STATE.md",
+    "docs/project-context.md",
+    "docs/decision-log.md"
+  ],
+  "currentMission": "LEL-FP00-CANON-AND-PLAYABLE-SPINE"
+}

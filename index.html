@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b9c8bf" />
+    <title>LATTICE: THE EMPTY LEAGUE — FP-00</title>
+  </head>
+  <body>
+    <main id="game-shell">
+      <div id="viewport" aria-label="LATTICE 3D playfield"></div>
+      <section id="hud" aria-live="polite">
+        <div class="objective-chip">
+          <span class="eyebrow">CURRENT ROUTE</span>
+          <strong id="objective">Reach the abandoned league terminal</strong>
+        </div>
+        <div id="grid-status" class="status-strip">NODE 00 · GRID OFFLINE</div>
+        <div id="interaction-prompt" class="interaction-prompt" hidden></div>
+        <div id="controls-hint" class="controls-hint">WASD / ARROWS — MOVE · E — INTERACT</div>
+      </section>
+
+      <section id="terminal" class="overlay" hidden aria-label="Formation Terminal">
+        <div class="panel terminal-panel">
+          <header>
+            <div>
+              <span class="eyebrow">PLATFORM 06 · LOCAL REGULATION</span>
+              <h1>Formation Terminal</h1>
+            </div>
+            <button id="terminal-close" class="ghost-button" type="button">Close</button>
+          </header>
+          <p class="rule-copy">Register exactly seven players. TRIANGLE requires an Anchor, a Relayer, and two Runners.</p>
+          <div class="terminal-grid">
+            <section>
+              <h2>Roster · 8 persistent players</h2>
+              <div id="roster-list" class="roster-list"></div>
+            </section>
+            <section>
+              <h2>Match registration · 7 slots</h2>
+              <ol id="registration-slots" class="registration-slots"></ol>
+              <div id="formation-buttons" class="formation-buttons"></div>
+              <div id="formation-validity" class="validity"></div>
+              <button id="formation-confirm" class="primary-button" type="button">Commit formation</button>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="conversation" class="overlay conversation-overlay" hidden aria-label="Registered Echo dialogue">
+        <div class="panel conversation-panel">
+          <span class="eyebrow">REGISTERED ECHO · AWAY CLUB ARCHIVE</span>
+          <h1 id="speaker">MARA // SIGNAL REMNANT</h1>
+          <p id="dialogue-line"></p>
+          <button id="dialogue-next" class="primary-button" type="button">Continue</button>
+        </div>
+      </section>
+
+      <section id="focus-pause" class="focus-pause" hidden>PAUSED · CLICK TO RESUME</section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
