@@ -9,6 +9,7 @@ import {
   markEchoReached,
   markTerminalReached,
   setFormation,
+  swapFormationAssignments,
   togglePlayerRegistration,
 } from "./game/simulation/GameState";
 import type { Formation, GameState } from "./game/simulation/types";
@@ -31,6 +32,10 @@ const ui = new GameUi({
   },
   onFormation: (formation: Formation) => {
     state = setFormation(state, formation);
+    ui.render(state);
+  },
+  onSwapFormationSlots: (firstIndex, secondIndex) => {
+    state = swapFormationAssignments(state, firstIndex, secondIndex);
     ui.render(state);
   },
   onConfirmFormation: () => {

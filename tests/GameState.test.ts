@@ -5,6 +5,7 @@ import {
   createInitialGameState,
   evaluateFormation,
   setFormation,
+  swapFormationAssignments,
   togglePlayerRegistration,
 } from "../src/game/simulation/GameState";
 
@@ -16,11 +17,16 @@ describe("FP-00 formation contract", () => {
     expect(evaluateFormation(state).valid).toBe(false);
   });
 
-  it("accepts a regulation seven-player Triangle", () => {
+  it("requires the same seven players to occupy compatible Triangle nodes", () => {
     let state = createInitialGameState();
     state = togglePlayerRegistration(state, "kestrel");
     state = setFormation(state, "Triangle");
 
+    expect(evaluateFormation(state).valid).toBe(false);
+    expect(evaluateFormation(state).reasons).toContain("Apex Runner requires Runner.");
+    state = swapFormationAssignments(state, 0, 2);
+    state = swapFormationAssignments(state, 1, 3);
+    state = swapFormationAssignments(state, 2, 5);
     expect(evaluateFormation(state)).toEqual({ valid: true, reasons: [] });
     state = activateGate(state);
     expect(state.gatePowered).toBe(true);
@@ -33,6 +39,22 @@ describe("FP-00 formation contract", () => {
     state = togglePlayerRegistration(state, "mira");
     expect(state.selectedPlayerIds).toHaveLength(7);
     expect(new Set(state.selectedPlayerIds).size).toBe(7);
+    expect(state.formationAssignments.filter((id) => id !== null)).toHaveLength(7);
+    expect(new Set(state.formationAssignments.filter((id) => id !== null)).size).toBe(7);
+  });
+
+  it("rejects invalid or locked slot swaps without mutating formation authority", () => {
+    const initial = createInitialGameState();
+    expect(swapFormationAssignments(initial, -1, 2)).toBe(initial);
+    expect(swapFormationAssignments(initial, 0, 0)).toBe(initial);
+
+    let committed = togglePlayerRegistration(initial, "kestrel");
+    committed = setFormation(committed, "Triangle");
+    committed = swapFormationAssignments(committed, 0, 2);
+    committed = swapFormationAssignments(committed, 1, 3);
+    committed = swapFormationAssignments(committed, 2, 5);
+    committed = activateGate(committed);
+    expect(swapFormationAssignments(committed, 0, 1)).toBe(committed);
   });
 
   it("does not complete the echo conversation before gate activation", () => {

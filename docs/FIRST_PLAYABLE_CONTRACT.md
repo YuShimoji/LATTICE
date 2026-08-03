@@ -26,3 +26,20 @@
 - `npm run typecheck`、`npm test`、`npm run build`が成功する。
 
 FP-00をFull First Playable完成とは主張しません。
+
+## Current FP-01A — Formation Wiring
+
+FP-00の7人登録を、人数・役割の集計だけでなく、Triangle上の位置関係を操作するプレイへ深めます。
+
+### Acceptance conditions
+
+- Triangleを7つの名前付きノードと接続線として表示する。
+- 同じ7人・同じTriangleでも、Runner 2点、Relayer 1点、Anchor 1点の配置が不適合ならゲートは起動しない。
+- 2つのノードを順に選ぶと、その2人だけを入れ替えられる。
+- 適合／不適合のノードと規約不成立理由が端末上で判別できる。
+- ノード割当はserializable simulation stateが所有し、UI上の一時選択状態と分離する。
+- ゲート起動後は割当を変更できない。
+- `npm run typecheck`、`npm test`、`npm run build`が成功する。
+- 実ブラウザで不成立配置から成立配置へ組み替え、既存のroute restoredまで到達できる。
+
+FP-01AもFull First Playable完成とは主張しません。

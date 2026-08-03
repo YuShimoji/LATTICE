@@ -28,7 +28,7 @@
             </div>
             <button id="terminal-close" class="ghost-button" type="button">Close</button>
           </header>
-          <p class="rule-copy">Register exactly seven players. TRIANGLE requires an Anchor, a Relayer, and two Runners.</p>
+          <p class="rule-copy">Register exactly seven players. TRIANGLE requires two Runner channels, a Relay junction, and an Anchor foundation. Select two topology nodes to swap their players.</p>
           <div class="terminal-grid">
             <section>
               <h2>Roster · 8 persistent players</h2>
@@ -38,6 +38,9 @@
               <h2>Match registration · 7 slots</h2>
               <ol id="registration-slots" class="registration-slots"></ol>
               <div id="formation-buttons" class="formation-buttons"></div>
+              <h2>Live topology · select two nodes to swap</h2>
+              <div id="formation-board" class="formation-board" aria-label="Triangle formation topology"></div>
+              <p id="formation-hint" class="formation-hint"></p>
               <div id="formation-validity" class="validity"></div>
               <button id="formation-confirm" class="primary-button" type="button">Commit formation</button>
             </section>

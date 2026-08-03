@@ -18,6 +18,7 @@ export interface FormationEvaluation {
 
 export interface GameState {
   selectedPlayerIds: string[];
+  formationAssignments: Array<string | null>;
   formation: Formation | null;
   gatePowered: boolean;
   conversationCompleted: boolean;

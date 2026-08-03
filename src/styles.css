@@ -50,6 +50,19 @@ h2 { margin-bottom: 12px; color: #41584e; font-size: 12px; letter-spacing: 0.12e
 .formation-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 12px 0; }
 .formation-buttons button, .ghost-button { padding: 9px 11px; border: 1px solid #789084; background: transparent; color: #29473b; cursor: pointer; }
 .formation-buttons button[aria-pressed="true"] { background: #cf6c42; border-color: #cf6c42; color: #fff8ed; }
+.formation-board { position: relative; min-height: 360px; margin: 10px 0 8px; overflow: hidden; border: 1px solid #9caf9f; background: linear-gradient(145deg, rgba(42, 73, 61, 0.04), rgba(207, 108, 66, 0.08)); }
+.formation-board svg { position: absolute; inset: 7%; width: 86%; height: 86%; overflow: visible; }
+.formation-board line { stroke: #9aad9f; stroke-width: 1.1; vector-effect: non-scaling-stroke; }
+.formation-board line[data-active="true"] { stroke: #cf6c42; stroke-width: 2; }
+.formation-board[data-valid="true"] line { stroke: #3d9b7f; }
+.formation-node { position: absolute; width: 118px; min-height: 58px; padding: 7px; transform: translate(-50%, -50%); border: 2px solid #84988c; color: #263b32; background: #edf2e9; box-shadow: 0 7px 18px rgba(23, 42, 34, 0.14); cursor: pointer; }
+.formation-node span, .formation-node small { display: block; font: 700 8px/1.25 ui-monospace, monospace; letter-spacing: 0.04em; }
+.formation-node strong { display: block; margin: 3px 0; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.formation-node.compatible { border-color: #4e806c; }
+.formation-node.incompatible { border-color: #c25d45; background: #f4ddd2; }
+.formation-node[aria-pressed="true"] { outline: 4px solid rgba(207, 108, 66, 0.32); border-color: #cf6c42; }
+.formation-node:disabled { cursor: default; opacity: 0.62; }
+.formation-hint { min-height: 28px; margin: 0; color: #52685d; font-size: 11px; }
 .primary-button { width: 100%; padding: 12px 15px; color: white; background: #315b4c; border: 0; cursor: pointer; font-weight: 800; }
 .primary-button:disabled { background: #9aaba2; cursor: not-allowed; }
 .validity { min-height: 76px; margin: 12px 0; padding: 10px; background: #dce6df; color: #4f6259; font-size: 12px; }
@@ -68,6 +81,9 @@ h2 { margin-bottom: 12px; color: #41584e; font-size: 12px; letter-spacing: 0.12e
   .terminal-panel { padding: 18px; }
   .terminal-grid { grid-template-columns: 1fr; }
   .roster-list { grid-template-columns: 1fr; }
+  .formation-board { min-height: 330px; }
+  .formation-node { width: 94px; min-height: 54px; padding: 5px; }
+  .formation-node strong { font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

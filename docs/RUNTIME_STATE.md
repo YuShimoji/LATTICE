@@ -15,7 +15,8 @@ Updated: 2026-08-04
 - Three connected fixed-camera station scenes.
 - Keyboard traversal and contextual interaction.
 - Eight-player roster, seven registration slots, three formation choices.
-- Platform 06 regulation validation and gate activation.
+- Seven-node Triangle topology with visible links and two-node player swaps.
+- Platform 06 position-dependent regulation validation and gate activation.
 - Registered Echo conversation and completed route state.
 - Serializable simulation state separated from rendering.
 - Read-only browser probe at `window.__LATTICE__`.
@@ -33,12 +34,13 @@ npm run build
 ## Latest verification
 
 - `npm run typecheck`: PASS.
-- `npm test`: 1 file / 4 tests PASS with a clean process exit; the earlier Windows open-handle warning did not reproduce on the 2026-08-04 recheck.
-- `npm run build`: Vite production build PASS; 12 modules, 495.27 kB main JS before gzip.
-- Browser QA: PASS at 1280×720 and 390×844.
-- Browser path: concourse → terminal → seventh player registration → Triangle → gate online → energized gate → three-line Registered Echo dialogue → route restored.
+- `npm test`: 1 file / 5 tests PASS with a clean process exit.
+- `npm run build`: Vite production build PASS; 13 modules, 499.46 kB main JS before gzip.
+- FP-00 Browser QA: PASS at 1280×720 and 390×844.
+- FP-01A desktop Browser QA: PASS at 1280×720.
+- FP-01A Browser path: terminal → seventh player registration → Triangle rejected with four position-specific reasons → three node swaps → regulation match → gate online → energized gate → three-line Registered Echo dialogue → route restored.
 - Browser console warning/error count: 0.
-- Evidence summary: `docs/verification/fp00-browser-qa.md`.
+- Evidence summaries: `docs/verification/fp00-browser-qa.md`, `docs/verification/fp01a-formation-wiring-browser-qa.md`.
 
 ## Boundaries
 
@@ -46,4 +48,4 @@ Primitive visual prototype only. No complete match simulation, save persistence,
 
 ## Current critical blocker
 
-None for FP-00 mechanical local validation. Human playtest and the next product slice remain separate gates.
+None for FP-01A mechanical local validation. Human playtest and the next product slice remain separate gates.
